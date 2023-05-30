@@ -1,0 +1,176 @@
+{
+	"id": "3669355c-c6e6-48ed-9e3d-8e7bf2950e71",
+	"name": "New Collection",
+	"timestamp": "2023-05-15T19:15:18.663Z",
+	"collection_id": "20664567-ba1e5448-c1fb-4b79-acf8-993e58d347b7",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 0,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2023-05-15T19:15:16.785Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "cfbbd8f9-0a79-4004-8a1d-b38ccfc57ff5",
+			"name": "EP_1",
+			"url": "162.55.220.72:5005/get_method?name=str&age=int",
+			"time": 100,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				100
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "3ccb70d1-d3f3-4caa-8e43-9cc67c30cb94",
+			"name": "EP_2",
+			"url": "162.55.220.72:5005/user_info_3",
+			"time": 107,
+			"responseCode": {
+				"code": 500,
+				"name": "INTERNAL SERVER ERROR"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				107
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "546961b7-6da3-40e0-a03f-bf58341ffef3",
+			"name": "EP_3",
+			"url": "http://162.55.220.72:5005/object_info_1?name=str&age=31&weight=1000",
+			"time": 87,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				87
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "fa4ed744-61bf-45bc-b531-f3b874045ca1",
+			"name": "EP_4",
+			"url": "Http://162.55.220.72:5005/object_info_2?name=str&age=27&salary=1500",
+			"time": 100,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				100
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "c63f963e-159e-4d68-865c-8ca5ac9075cf",
+			"name": "EP_5",
+			"url": "162.55.220.72:5005/object_info_3?name=str&age=33&salary=1000",
+			"time": 103,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				103
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "88c5e4d9-f85e-4a74-a989-541a9744fb6d",
+			"name": "EP_6",
+			"url": "162.55.220.72:5005/object_info_4?name=str&age=27&salary=1500",
+			"time": 107,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				107
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "d3688aba-00ed-444a-8e2a-399b2165eca0",
+			"name": "EP_7",
+			"url": "162.55.220.72:5005/user_info_2",
+			"time": 102,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				102
+			],
+			"allTests": [
+				{}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 706,
+	"collection": {
+		"requests": [
+			{
+				"id": "cfbbd8f9-0a79-4004-8a1d-b38ccfc57ff5",
+				"method": "GET"
+			},
+			{
+				"id": "3ccb70d1-d3f3-4caa-8e43-9cc67c30cb94",
+				"method": "POST"
+			},
+			{
+				"id": "546961b7-6da3-40e0-a03f-bf58341ffef3",
+				"method": "GET"
+			},
+			{
+				"id": "fa4ed744-61bf-45bc-b531-f3b874045ca1",
+				"method": "GET"
+			},
+			{
+				"id": "c63f963e-159e-4d68-865c-8ca5ac9075cf",
+				"method": "GET"
+			},
+			{
+				"id": "88c5e4d9-f85e-4a74-a989-541a9744fb6d",
+				"method": "GET"
+			},
+			{
+				"id": "d3688aba-00ed-444a-8e2a-399b2165eca0",
+				"method": "POST"
+			}
+		]
+	}
+}

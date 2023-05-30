@@ -1,0 +1,243 @@
+post token 
+ var jsonData = pm.response.json();
+ 
+ var jsontoken = jsonData.token
+pm.environment.set("token", jsontoken);
+
+ post user info 3
+// RESPONSE
+var jsonData = pm.response.json();
+
+pm.test("Response time is less than 200ms", function () {
+    pm.expect(pm.response.responseTime).to.be.below(200);
+});
+
+var reqData = request.data;
+
+pm.test("check Name, response", function () {
+   
+    pm.expect(jsonData.name).to.eql(reqData.name);
+});
+
+
+pm.test("check Age, response", function () {
+   
+    pm.expect(jsonData.age).to.eql(reqData.age);
+});
+
+pm.test("check Salary, response", function () {
+   
+    pm.expect(jsonData.salary).to.eql(+reqData.salary);
+});
+
+pm.test("u_salary_1_5_year salary*4", function() {
+    pm.expect(jsonData.family.u_salary_1_5_year).to.eql(+reqData.salary * 4);
+});
+
+console.log(jsonData.family);
+
+
+// REQUEST
+
+var requestData = request.data;
+
+pm.test("check Name, request", function () {
+   
+    pm.expect(requestData.name).to.eql("Anna");
+});
+
+pm.test("check Age, request", function () {
+   
+    pm.expect(requestData.age).to.eql("27");
+});
+
+pm.test("check Salary, request", function () {
+   
+    pm.expect(requestData.salary).to.eql("1000");
+});
+
+
+GET object info 3
+
+//RESPONSE
+
+var jsonData = pm.response.json();
+var reqData = pm.request.url.query.toObject();
+
+pm.test("Status code is 200", function () {
+    pm.response.to.have.status(200);
+});
+
+pm.test("Responce name check", function () {
+    pm.expect(jsonData.name).to.eql(reqData.name);
+});
+
+pm.test("Responce age check", function () {
+    pm.expect(jsonData.age).to.eql(reqData.age);
+});
+
+pm.test("Responce name salary", function () {
+    pm.expect(jsonData.salary).to.eql(+reqData.salary);
+});
+
+console.log(jsonData.family);
+
+pm.test("param Name form Dog", function() {
+    pm.expect(jsonData.family.pets.dog).to.property("name");
+});
+
+pm.test("param Age form Dog", function() {
+    pm.expect(jsonData.family.pets.dog).to.property("age");
+});
+
+pm.test("param Name = Luky form Dog", function() {
+    pm.expect(jsonData.family.pets.dog.name).to.eql("Luky");
+});
+
+pm.test("param Age dog = 4 form Dog", function() {
+    pm.expect(jsonData.family.pets.dog.age).to.eql(4);
+});
+
+GET object info 4 
+var jsonData = pm.response.json();
+var reqData = pm.request.url.query.toObject();
+
+pm.test("Status code is 200", function () {
+    pm.response.to.have.status(200);
+});
+
+pm.test("Responce name check", function () {
+    pm.expect(jsonData.name).to.eql(reqData.name);
+});
+
+pm.test("Responce age check", function () {
+    pm.expect(jsonData.age).to.eql(+reqData.age);
+});
+console.log("Fr req: " +jsonData.salary);
+
+console.log("Fr resp: " +reqData.salary);
+
+console.log("Fr req 0: " +jsonData.salary[0]);
+
+console.log("Fr req 1: " +jsonData.salary[1]);
+
+console.log("Fr req 2: " +jsonData.salary[2]);
+
+
+pm.test("Request salary 0", function () {
+    pm.expect(jsonData.salary[0]).to.eql(+reqData.salary);
+});
+
+pm.test("Request salary 1", function () {
+    pm.expect(+jsonData.salary[1]).to.eql(reqData.salary * 2);
+});
+
+pm.test("Request salary 2", function () {
+    pm.expect(+jsonData.salary[2]).to.eql(reqData.salary * 3);
+});
+
+pm.environment.set("name", reqData.name);
+pm.environment.set("age", reqData.age);
+pm.environment.set("salary", reqData.salary);
+
+pm.test("salary in console", function () {
+    var salaryResp = jsonData.salary;
+    for (var i = 0; i < salaryResp.length; i++) {
+        console.log("salary "+ i + ": " +salaryResp[i]);
+    }
+});
+
+POST user info 2
+var jsonData = pm.response.json();
+var reqData = request.data;
+
+pm.request.body.raw = {
+    "salary": pm.environment.get("salary"),
+    "age": pm.environment.get("age"),
+    "name": pm.environment.get("name")
+};
+
+pm.test("Status code is 200", function () {
+    pm.response.to.have.status(200);
+});
+
+pm.test("check start qa salary, response", function () {
+   
+    pm.expect(jsonData).to.have.property("start_qa_salary");
+});
+
+pm.test("check qa salary after 6 months,response", function () {
+   
+    pm.expect(jsonData).to.have.property("qa_salary_after_6_months");
+});
+
+pm.test("check qa salary after 12 months, response", function () {
+   
+    pm.expect(jsonData).to.have.property("qa_salary_after_12_months");
+});
+
+pm.test("check qa salary after 1.5 year, response", function () {
+   
+    pm.expect(jsonData).to.have.property("qa_salary_after_1.5_year");
+});
+
+pm.test("check qa salary after 3.5 years, response", function () {
+   
+    pm.expect(jsonData).to.have.property("qa_salary_after_3.5_years");
+});
+
+var jsonResp = JSON.parse (responseBody)
+
+pm.test("check person, response", function () {
+   
+    pm.expect(jsonData).to.have.property("person");
+});
+
+pm.test("check start qa salary, request", function () {
+   
+    pm.expect(reqData.start_qa_salary).to.eql(jsonData.salary);
+});
+
+pm.test("check start qa salary after 6 months, request", function () {
+   
+    pm.expect(jsonData.qa_salary_after_6_months).to.eql(reqData.salary * 2);
+});
+
+pm.test("check start qa salary after 12 months, request", function () {
+   
+    pm.expect(jsonData.qa_salary_after_12_months).to.eql(reqData.salary * 2.7);
+});
+
+pm.test("check start qa salary after 1.5 year, request", function () {
+   
+    pm.expect(jsonData["qa_salary_after_1.5_year"]).to.eql(reqData.salary * 3.3);
+});
+
+pm.test("check start qa salary after 3.5 years, request", function () {
+   
+    pm.expect(jsonData["qa_salary_after_3.5_years"]).to.eql(reqData.salary * 3.8);
+});
+
+
+pm.test("u name, request", function () {
+   
+    pm.expect(jsonData.person.u_name[1]).to.eql(+reqData.salary);
+});
+
+pm.test("u age, request", function () {
+   
+    pm.expect(jsonData.person.u_age).to.eql(+reqData.age);
+});
+
+pm.test("check u salary 5 years, request", function () {
+   
+    pm.expect(jsonData.person.u_salary_5_years).to.eql(reqData.salary * 4.2);
+});
+
+pm.test("person in console", function () {
+    var params = Object.keys(jsonData.person);
+    for (var i = 0; i < params.length; i++) {
+        console.log("params: " +params[i]);
+    }
+});
+
